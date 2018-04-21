@@ -19,7 +19,7 @@ public class SysUtil {
                 JsonObject jsonObject = jsonElement.getAsJsonObject();
                 int latestVersion = jsonObject.get("version_id").getAsInt();
                 String latestVersionStr = jsonObject.get("version").getAsString();
-                if (currentVersionID < latestVersion) {
+                if (currentVersionID == latestVersion) {
                     Bukkit.getConsoleSender().sendMessage(prefix + "§aYou are running the latest version of §e" + plugin + "§a!");
                 } else if(currentVersionID > latestVersion) {
                     Bukkit.getConsoleSender().sendMessage(prefix + "§eYou are using a version newer than the newest release version. You're probably using a beta or development version. Please check github.com/MagicMarvMan/MagicCore.");

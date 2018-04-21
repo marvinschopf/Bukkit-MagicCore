@@ -1,4 +1,5 @@
 name: MagicCore
 version: 1.0
 description: Core of all MagicPlugins
+loadbefore: ["DrWolfram", "Admin"]
 main: de.marvnet.minecraft.magiccore.main.Main
