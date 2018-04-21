@@ -50,7 +50,11 @@ public class SysUtil {
                     if(currentVersionID == latestVersion) {
                         Bukkit.getConsoleSender().sendMessage(prefix + "§aYou are running the latest version of §e" + plugin + "§a!");
                     } else {
-                        Bukkit.getConsoleSender().sendMessage(prefix + "§cA new version §e(" + latestVersionStr + ") §cof §e" + plugin +" §cis available. You are running version §e"+ currentVersion + "§c.");
+                        String versionBehindString = "§e" + (latestVersion - currentVersionID) + "§c versions";
+                        if((latestVersion - currentVersionID) == 1) {
+                            versionBehindString = "§e" + (latestVersion - currentVersionID) + "§c version";
+                        }
+                        Bukkit.getConsoleSender().sendMessage(prefix + "§cA new version §e(" + latestVersionStr + ") §cof §e" + plugin +" §cis available. You are running version §e"+ currentVersion + "§c. You are " + versionBehindString +  " behind.");
                     }
                 } catch (ClientProtocolException e) {
                     e.printStackTrace();
