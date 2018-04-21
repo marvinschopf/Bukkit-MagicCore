@@ -17,6 +17,6 @@ public class Main extends JavaPlugin {
     public void onEnable() {
         plugin = this;
         Bukkit.getServer().getPluginManager().registerEvents(new EvtJoin(), getPlugin());
-        MagicPlugins.checkVersion("MagicCore", "§7[§10MagicCore§7]§f ", 1);
+        MagicPlugins.checkVersion("MagicCore", "§7[§5MagicCore§7]§f ", 4);
     }
 }

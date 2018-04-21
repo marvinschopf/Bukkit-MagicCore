@@ -18,7 +18,7 @@ import java.io.IOException;
 
 public class SysUtil {
 
-    public static void checkVersion(final String plugin, final String prefix, final int currentVersion) {
+    public static void checkVersion(final String plugin, final String prefix, final int currentVersionID, final String currentVersion) {
         Bukkit.getConsoleSender().sendMessage("§eChecking version...");
         Bukkit.getScheduler().runTaskAsynchronously(Main.getPlugin(), new Runnable() {
             @Override
@@ -46,10 +46,11 @@ public class SysUtil {
                     JsonElement jsonElement = new JsonParser().parse(responseBody);
                     JsonObject jsonObject = jsonElement.getAsJsonObject();
                     int latestVersion = jsonObject.get("version_id").getAsInt();
-                    if(currentVersion == latestVersion) {
-                        Bukkit.getConsoleSender().sendMessage(prefix + "§aYou are running the latest version of AdminGUI!");
+                    String latestVersionStr = jsonObject.get("version").getAsString();
+                    if(currentVersionID == latestVersion) {
+                        Bukkit.getConsoleSender().sendMessage(prefix + "§aYou are running the latest version of §e" + plugin + "§a!");
                     } else {
-                        Bukkit.getConsoleSender().sendMessage(prefix + "§cA newer version §e(" + latestVersion + ") §cof AdminGUI is available. You are running version §e"+ currentVersion + "§c.");
+                        Bukkit.getConsoleSender().sendMessage(prefix + "§cA new version §e(" + latestVersionStr + ") §cof §e" + plugin +" §cis available. You are running version §e"+ currentVersion + "§c.");
                     }
                 } catch (ClientProtocolException e) {
                     e.printStackTrace();
